@@ -49,6 +49,7 @@ build_omplapp()
 	# create catkin workspace
 	mkdir -p $HOME/catkin_ws/src
 	cd $HOME/catkin_ws/src
+	git clone --depth=1 --branch=master https://github.com/ethz-asl/catkin_simple.git
 	catkin_init_workspace
 	cd -
 
@@ -62,6 +63,7 @@ build_omplapp()
 	cd ..
 	cp -R omplapp_catkin $HOME/catkin_ws/src
 	cd $HOME/catkin_ws/
+	
 	catkin_make
 }
 
