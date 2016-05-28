@@ -13,6 +13,34 @@ install_prerequisites()
 		build-essential 
 }
 
+install_libccd_and_fcl()
+{
+	wget -O - https://github.com/danfis/libccd/archive/v2.0.tar.gz | tar zxf - ;
+        cd libccd-2.0;
+        cmake .;
+        sudo make install;
+        cd ..;
+        wget -O - https://github.com/flexible-collision-library/fcl/archive/0.4.0.tar.gz | tar zxf - ;
+        cd fcl-0.4.0;
+        cmake .;
+        sudo make install;
+        cd ..;
+}
+
+install_dependencies()
+{
+	install_prerequisites
+
+	mkdir -p build_deps
+	cd build_deps
+	install_libccd_and_fcl
+	cd ..
+	rm -rf build_deps
+
+}
+
+
+
 build_omplapp()
 {
 	# setup ros env
@@ -39,5 +67,5 @@ build_omplapp()
 
 
 # RUN
-install_prerequisites
+install_dependencies
 build_omplapp
