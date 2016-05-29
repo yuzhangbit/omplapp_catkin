@@ -20,7 +20,9 @@ ExternalProject_Add(omplapp_src
 
 cs_add_library(${PROJECT_NAME} src/dependency_tracker.cc)
 add_dependencies(${PROJECT_NAME} omplapp_src)
-target_link_libraries(${PROJECT_NAME} ${CATKIN_DEVEL_PREFIX}/lib/libompl${CMAKE_SHARED_LIBRARY_SUFFIX})
+target_link_libraries(${PROJECT_NAME} ${CATKIN_DEVEL_PREFIX}/lib/libompl${CMAKE_SHARED_LIBRARY_SUFFIX}
+                    ${CATKIN_DEVEL_PREFIX}/lib/libompl_app${CMAKE_SHARED_LIBRARY_SUFFIX}
+                    ${CATKIN_DEVEL_PREFIX}/lib/libompl_app_base${CMAKE_SHARED_LIBRARY_SUFFIX})
 
 cs_install()
 
